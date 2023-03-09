@@ -10,7 +10,7 @@ def main():
     ### YOUR CODE HERE
 
     # Smooth image with Gaussian kernel
-    kernel = gaussian_kernel()
+    kernel = gaussian_kernel(l=5, sig=1.)
     smoothed = filter2d(img, kernel)
 
     # Compute x and y derivate on smoothed image
@@ -21,12 +21,18 @@ def main():
     grad_mag = np.sqrt(np.square(part_x) + np.square(part_y))
 
     # Visualize results
-    plt.subplot(1, 2, 1)
-    plt.imshow(img, cmap='gray')
-    plt.title('Before')
-    plt.subplot(1, 2, 2)
-    plt.imshow(grad_mag, cmap='gray')
-    plt.title('After')
+    plt.subplot(2, 2, 1)
+    plt.imshow(part_x, cmap = 'gray')
+    plt.title('Image 1: Gradient on x')
+
+    plt.subplot(2, 2, 2)
+    plt.imshow(part_y, cmap = 'gray')
+    plt.title('Image 2: Gradient on y')
+
+    plt.subplot(2, 2, 3)
+    plt.imshow(grad_mag, cmap = 'gray')
+    plt.title('Image 3: Gradient magnitude')
+
     plt.show()
 
     ### END YOUR CODE
